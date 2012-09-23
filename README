@@ -1,0 +1,28 @@
+This is Example - Reports DAO package, used to read/write data to 
+AdX equivalent tables in RTB-Vertica DB.
+
+To use this package copy the config files from 
+src/test/resources to your App's config dir and
+replace your apps config parameters.
+
+APIs
+======
+ReportingDaoFactory is the factory class which gives the required dao
+when respective Entity class is passed.
+eg.
+BaseDao advDao = ReportingDaoFactory.getInstance().getDAO(Advertiser.class);
+
+Each entity implements an Entity marker interface. 
+Below is the way to save/delete/getAll an entity type.
+eg.
+BaseEntity entity = new Advertiser();
+advDao.save(entity);
+
+Each DAO class extends abstract class BaseDao which has 3 methods:
+1. save : creates or updates given entity object
+2. delete: deletes given entity object
+3. getAll: returns list of all objects from the table
+Each dao has a method "getByPrimaryKey" which enables a look up on 
+primary key of the table.
+
+Check unit tests for more usage details.
